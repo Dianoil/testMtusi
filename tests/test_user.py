@@ -51,10 +51,8 @@ def test_create_user_with_invalid_email():
     assert response.json() == {"detail": "User with this email already exists"}
 def test_delete_user():
     '''Удаление пользователя'''
-     '''Удаление пользователя'''
     response = client.delete("/api/v1/user", params={'email': users[0]['email']})
     assert response.status_code == 204
-    
     # Проверяем, что пользователь действительно удален
     response = client.get("/api/v1/user", params={'email': users[0]['email']})
     assert response.status_code == 404
